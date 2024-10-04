@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Seletor de Cores</title>
+  <style>
+    body {
+      background-color: red; /* A cor inicial de fundo */
+      text-align: center;
+      margin-top:170px;
+    }
+
+    select {
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+    <h1>Selecione a cor de fundo</h1>
+  <select id="cor-selector">
+    <option value="red">Vermelho</option>
+    <option value="blue">Azul</option>
+    <option value="yellow">Amarelo</option>
+    <option value="green">Verde</option>
+    <option value="orange">Laranja</option>
+  </select>
+
+  <script>
+    const corSelector = document.getElementById('cor-selector');
+
+    corSelector.addEventListener('change', () => {
+      const selectedCor = corSelector.value;
+      document.body.style.backgroundColor = selectedCor; // Corrigido: usar a variável correta
+    });
+  </script>
+</body>
+</html>

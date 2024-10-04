@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculadora</title>
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            
+            background-color: rgb(238, 238, 152);
+            align-items: flex-start;
+        }
+        
+
+        
+        h2{
+            color:rgb(0, 0, 0);
+           
+        }
+        
+    </style>
+</head>
+<body>
+    <div>
+    <h2>Executa a operação matemática escolhida</h2>
+    <div>
+    Numero 1: <input type="number" id="num1" placeholder="Digite"> <br>
+    Numero 2: <input type="number" id="num2" placeholder="Digite"> <br> <br>
+
+    <button onclick="somar()">Soma</button> <br>
+    <input type="text" id="resultadoSoma" readonly> <br> <br>
+
+    <button onclick="subtrair()">Subtração</button> <br>
+    <input type="text" id="resultadoSubtracao" readonly> <br> <br>
+
+    <button onclick="multiplicar()">Multiplicação</button> <br>
+    <input type="text" id="resultadoMultiplicacao" readonly> <br> <br>
+
+    <button onclick="dividir()">Divisão</button> <br>
+    <input type="text" id="resultadoDivisao" readonly> <br> <br>
+
+    <button onclick="modulo()">Módulo</button> <br>
+    <input type="text" id="resultadoModulo" readonly> <br> <br>
+
+    <button onclick="limpar()">Limpar</button> <br> 
+    <button onclick="calcularTodos()">Calcular Todos</button> <br>
+ </div>
+    <script>
+        function getValues() {
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+
+            if (isNaN(num1) || isNaN(num2)) {
+                alert('insira números válidos.');
+                return;
+            }
+
+            return { num1, num2 };
+        }
+
+        function somar() {
+            const { num1, num2 } = getValues();
+            if (num1 !== undefined && num2 !== undefined) {
+                document.getElementById('resultadoSoma').value = num1 + num2;
+            }
+        }
+
+        function subtrair() {
+            const { num1, num2 } = getValues();
+            if (num1 !== undefined && num2 !== undefined) {
+                document.getElementById('resultadoSubtracao').value = num1 - num2;
+            }
+        }
+
+        function multiplicar() {
+            const { num1, num2 } = getValues();
+            if (num1 !== undefined && num2 !== undefined) {
+                document.getElementById('resultadoMultiplicacao').value = num1 * num2;
+            }
+        }
+
+        function dividir() {
+            const { num1, num2 } = getValues();
+            if (num1 !== undefined && num2 !== undefined) {
+                if (num2 === 0) {
+                    document.getElementById('resultadoDivisao').value = 'Divisão por zero!';
+                } else {
+                    document.getElementById('resultadoDivisao').value = num1 / num2;
+                }
+            }
+        }
+
+        function modulo() {
+            const { num1, num2 } = getValues();
+            if (num1 !== undefined && num2 !== undefined) {
+                document.getElementById('resultadoModulo').value = num1 % num2;
+            }
+        }
+
+        function limpar() {
+            document.getElementById('num1').value = '';
+            document.getElementById('num2').value = '';
+            document.getElementById('resultadoSoma').value = '';
+            document.getElementById('resultadoSubtracao').value = '';
+            document.getElementById('resultadoMultiplicacao').value = '';
+            document.getElementById('resultadoDivisao').value = '';
+            document.getElementById('resultadoModulo').value = '';
+        }
+
+        function calcularTodos() {
+            const { num1, num2 } = getValues();
+            if (num1 !== undefined && num2 !== undefined) {
+                somar();
+                subtrair();
+                multiplicar();
+                dividir();
+                modulo();
+            }
+        }
+    </script>
+</body>
+</html>

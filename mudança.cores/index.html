@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mudança das Cores</title>
+    <style>
+        body {
+            background-color: gray; 
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: red; 
+            margin-top: 50px;
+        }
+
+        .cor {
+            margin: 5px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #ddd;
+        }
+
+        .cor:hover {
+            background-color: #ccc;
+        }
+
+        input[type="radio"] {
+            margin: 5px;
+        }
+        
+
+    </style>
+</head>
+<body>
+    <h1>Mudança das Cores</h1>
+
+    
+    Cor de fundo: <button class="cor" data-cor="red">Vermelho</button>
+    <button class="cor" data-cor="cyan">Ciano</button>
+    <button class="cor" data-cor="silver">Prata</button>
+    <button class="cor" data-cor="orange">Laranja</button> <br> <br>
+
+    
+    <label>
+    Cor da letra: <input type="radio" name="corLetra" value="red"> Vermelho
+    </label>
+    <label>
+        <input type="radio" name="corLetra" value="cyan"> Ciano
+    </label>
+    <label>
+        <input type="radio" name="corLetra" value="silver"> Prata
+    </label>
+    <label>
+        <input type="radio" name="corLetra" value="orange"> Laranja
+    </label>
+
+    <script>
+        const botoesCor = document.querySelectorAll('.cor');
+        const radiosCorLetra = document.querySelectorAll('input[name="corLetra"]');
+        const body = document.body;
+
+        botoesCor.forEach(botao => {
+            botao.addEventListener('click', () => {
+                body.style.backgroundColor = botao.dataset.cor; // Muda a cor de fundo
+            });
+        });
+
+        radiosCorLetra.forEach(radio => {
+            radio.addEventListener('change', () => {
+                if (radio.checked) {
+                    body.style.color = radio.value; // Muda a cor do texto
+                }
+            });
+        });
+    </script>
+</body>
+</html>
